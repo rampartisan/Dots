@@ -1,0 +1,171 @@
+[colours]
+transparent = #00000000
+background  = ${xrdb:background}
+foreground  = ${xrdb:foreground} 
+black       = ${xrdb:color0}
+red         = ${xrdb:color1}
+green       = ${xrdb:color2}
+yellow      = ${xrdb:color3}
+blue        = ${xrdb:color4}
+magenta     = ${xrdb:color5}
+cyan        = ${xrdb:color6}
+white       = ${xrdb:color7}
+bblack      = ${xrdb:color8}
+bred        = ${xrdb:color9}
+bgreen      = ${xrdb:color10}
+byellow     = ${xrdb:color11}
+bblue       = ${xrdb:color12}
+bmagenta    = ${xrdb:color13}
+bcyan       = ${xrdb:color14}
+bwhite      = ${xrdb:color15}
+
+[bar/alNixBar]
+
+width         = 100%
+height        = 25
+bottom        = false
+fixed-center  = true
+underline-size = 2
+
+font-2 ="FontAwesome:style=Regular:size=11:antialias=true;"
+font-1 ="DejaVu Sans:size=22:antialias=true;5"
+font-0 ="Droid Sans Mono Slashed for Powerline:size=11:antialias=true;"
+
+background = ${colours.background}
+foreground = ${colours.foreground}
+
+modules-left   = battery wifi vpn
+modules-right  = date time
+modules-center = i3
+
+[module/vpn]
+type = custom/script
+exec = ~/.config/polybar/vpnName.sh
+interval = 10
+format = <label>
+format-foreground = ${colours.cyan}
+format-padding = 2
+format-margin = 2
+format-underline = ${colours.blue}
+
+
+[module/wifi]
+type = internal/network
+interface = wlp2s0
+interval = 3.0
+
+format-connected = <label-connected>
+format-connected-underline = ${colours.blue}
+format-connected-padding = 2
+format-connected-margin=2
+format-connected-font = 1
+
+format-disconnected = <label-disconnected>
+format-disconnected-underline = ${colours.red}
+format-disconnected-padding = 2
+format-disconnected-margin=2
+format-disconnected-font=1
+
+label-connected = %essid%%downspeed:9%
+label-connected-foreground = ${colours.cyan}
+label-connected-font = 1
+
+label-disconnected = Disconnected
+label-disconnected-foreground = ${colours.red}
+label-diconnected-font=1
+
+[module/battery]
+type = internal/battery
+
+battery = BAT0
+adapter = AC
+poll-interval = 5
+full-at =98
+
+format-charging             = <ramp-capacity> 
+format-charging-underline    = ${colours.blue}
+format-charging-padding     = 2
+format-charging-margin      = 2
+
+format-discharging          = <ramp-capacity>
+format-discharging-underline = ${colours.red}
+format-discharging-padding  = 2
+format-discharging-margin   = 2
+
+format-full                 = <ramp-capacity>
+format-full-underline        = ${colours.green}
+format-full-padding         = 2
+format-full-margin          = 2
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+ramp-capacity-foreground   = ${colours.blue}
+ramp-capacity-0-foreground = ${colours.red}
+ramp-capacity-font         = 3
+
+[module/time]
+type              = internal/date
+interval          = 1.0
+date              = %H:%M
+format-foreground = ${colours.cyan}
+format-underline   = ${colours.blue}
+format-font       = 1
+format-padding    = 1
+format-margin     = 1
+
+[module/date]
+type              = internal/date
+interval          = 1.0
+date              = %Y-%m-%d%
+format-foreground = ${colours.cyan}
+format-underline   = ${colours.blue}
+format-font       = 1
+format-padding    = 1
+format-margin     = 1
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+
+ws-icon-0 = 1;⚀
+ws-icon-1 = 2;⚁
+ws-icon-2 = 3;⚂
+ws-icon-3 = 4;⚃
+ws-icon-4 = 5;⚄
+ws-icon-5 = 6;⚅
+ws-icon-6 = 7;♢
+ws-icon-7 = 8;♡
+
+ 
+label-mode = %icon%
+label-mode-foreground = ${colours.white}
+label-mode-background = ${colours.transparent}
+label-mode-margin=2
+label-mode-padding = 2
+
+
+label-urgent = %icon%
+label-urgent-foreground = ${colours.red}
+label-urgent-margin=2
+label-urgent-padding = 2
+
+
+label-focused = %icon%
+label-focused-foreground = ${colours.green}
+label-focused-margin=2
+label-focused-padding = 2
+
+label-unfocused = %icon%
+label-unfocused-foreground = ${colours.blue} 
+label-unfocused-margin=2
+label-unfocused-padding = 2
+
+label-visible = %icon%
+label-visible-foreground = ${colours.yellow}
+label-visible-margin=2
+label-visible-padding = 2
+
