@@ -139,11 +139,11 @@ ws-icon-4 = 5;⚄
 ws-icon-5 = 6;⚅
 ws-icon-6 = 7;♢
 ws-icon-7 = 8;♡
-
+ws-icon-default = 
  
-label-mode = %icon%
+label-mode = %mode%
 label-mode-foreground = ${colours.white}
-label-mode-background = ${colours.transparent}
+label-mode-background = ${colours.background}
 label-mode-margin=2
 label-mode-padding = 2
 

@@ -10,7 +10,7 @@ muteIcon="/usr/lib/node_modules/material-design-icons/av/1x_web/ic_mic_off_white
 
 function is_muted
 {
-  test "$vol_muted" = 'on'
+  test "$vol_muted" = 'off'
 }
 
 function get_vol
@@ -44,7 +44,7 @@ case "$1" in
     exit 0
     ;;
   tog)
-    amixer -q set Master toggle
+    amixer -q set Capture toggle
     vol_muted=$(amixer sget Capture | tail -1 | cut -d' ' -f8 | sed 's/\(\[\|\]\)//g')
 
     if is_muted; then

@@ -10,7 +10,7 @@ muteIcon="/lib/node_modules/material-design-icons/av/1x_web/ic_volume_off_white_
 
 function is_muted
 {
-  test "$vol_muted" = 'on'
+  test "$vol_muted" = 'off'
 }
 
 function get_vol

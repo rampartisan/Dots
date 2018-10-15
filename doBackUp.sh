@@ -1,6 +1,8 @@
 #!/bin/sh
-rm -rf ..?* .[!.]* 
 
+rm -rf .config
+rm -rf .oh-my-zsh
+rm -rf .themes
 mkdir .config
 mkdir -p .oh-my-zsh/themes/
 mkdir .themes

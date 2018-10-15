@@ -1,3 +1,4 @@
+set nowrap
 set linenumbers
 set tabsize 4
 set titlecolor white,black
