@@ -62,13 +62,8 @@ bindsym $mod+h split h;
 bindsym $mod+v split v;
 bindsym $mod+q split toggle
 
-# toggle fullscreen mode for the focused container
+# toggle fullscreen tmode for the focused container
 bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -230,14 +225,15 @@ bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/i3/scripts/bckctl.sh 
 bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/i3/scripts/bckctl.sh dec
 
 # Autostart applications
+exec --no-startup-id ~/Scripts/autoxrandr.sh
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec_always --no-startup-id hsetroot -solid '#404552'
+exec --no-startup-id hsetroot -solid '#404552'
 exec --no-startup-id compton -b
 exec --no-startup-id nm-applet
 exec --no-startup-id $HOME/.config/polybar/launch.sh
 exec --no-startup-id clipster -d 
 exec --no-startup-id xss-lock -- $locker
-exec_always  --no-startup-id fix_xcursor
+exec  --no-startup-id fix_xcursor
 exec --no-startup-id unclutter 
 #exec --no-startup-id dunst -config ~/.config/dunst/dunstrc
 
@@ -268,7 +264,7 @@ gaps outer -2
 smart_borders true
 
 # window                border             background         text                 indicator	    child_border
-client.focused          $term_color3       $term_background   $term_foreground     $term_color3	    $term_color3
+client.focused          $term_color4       $term_background   $term_foreground     $term_color4	    $term_color4
 client.focused_inactive $term_background   $term_background   $term_foreground     $term_background $term_background
 client.unfocused        $term_background   $term_background   $term_foreground     $term_background $term_background
 client.urgent           $term_color1       $term_background   $term_foreground     $term_color1     $term_color1

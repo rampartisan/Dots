@@ -11,12 +11,12 @@ eval cyan='$fg[cyan]'
 eval white='$fg[white]'
 eval grey='$fg[grey]'
 
-PROMPT='$(_user_host)${_current_dir}$(git_prompt_info)$(git_prompt_short_sha)
-%{$white%}>%{$reset_color%} '
+PROMPT='%{$cyan%}❲${_current_dir}%{$cyan%}❳$(git_prompt_info)$(git_prompt_short_sha)
+%{$blue%}▪%{$reset_color%} '
 
-PROMPT2='%{$grey%}◀%{$reset_color%} '
+PROMPT2='%{$yellow%}◀%{$reset_color%} '
 
-local _current_dir="%{$green%}%0~%{$reset_color%} "
+local _current_dir="%{$green%}%0~%{$reset_color%}"
 local _return_status="%{$red%}%(?..×)%{$reset_color%}"
 local _hist_no="%{$grey%}%h%{$reset_color%}"
 
@@ -62,12 +62,12 @@ function _git_time_since_commit() {
 if [[ $USER == "root" ]]; then
   CARETCOLOR="$red"
 else
-  CARETCOLOR="$white"
+  CARETCOLOR="$cyan"
 fi
 
 MODE_INDICATOR="%{_bold$yellow%}❮%{$reset_color%}%{$yellow%}❮❮%{$reset_color%}"
 
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$white%}on %{$blue%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$cyan%}❲%{$blue%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
 
 ZSH_THEME_GIT_PROMPT_DIRTY=" %{$red%}●%{$reset_color%}"
@@ -86,6 +86,6 @@ ZSH_THEME_GIT_TIME_SINCE_COMMIT_LONG="%{$red%}"
 ZSH_THEME_GIT_TIME_SINCE_COMMIT_NEUTRAL="%{$yellow%}"
 
 # Format for git_prompt_long_sha() and git_prompt_short_sha()
-ZSH_THEME_GIT_PROMPT_SHA_BEFORE="%{$reset_color%}[%{$yellow%}"
-ZSH_THEME_GIT_PROMPT_SHA_AFTER="%{$reset_color%}]"
+ZSH_THEME_GIT_PROMPT_SHA_BEFORE="%{$reset_color%}%{$yellow%}"
+ZSH_THEME_GIT_PROMPT_SHA_AFTER="%{$cyan%}❳%{$reset_color%}"
 

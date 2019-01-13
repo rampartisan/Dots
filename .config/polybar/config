@@ -1,5 +1,6 @@
 [colours]
 transparent = #00000000
+desktop  = #404552
 background  = ${xrdb:background}
 foreground  = ${xrdb:foreground} 
 black       = ${xrdb:color0}
@@ -22,57 +23,68 @@ bwhite      = ${xrdb:color15}
 [bar/alNixBar]
 
 width         = 100%
-height        = 25
-bottom        = false
+height        = 28
+radius        = 0
 fixed-center  = true
-underline-size = 2
+
+border-size = 0
+line-size = 0
+padding-top = 0
+padding-bottom = 0
+padding-left = 4
+padding-right = 4
+module-margin = 4
 
 font-2 ="FontAwesome:style=Regular:size=11:antialias=true;"
 font-1 ="DejaVu Sans:size=22:antialias=true;5"
-font-0 ="Droid Sans Mono Slashed for Powerline:size=11:antialias=true;"
+font-0 ="M+:style=Bold:size=10:antialias=true;3"
 
-background = ${colours.background}
-foreground = ${colours.foreground}
+background = ${colours.desktop}
+foreground = ${colours.desktop}
+
+border-top-color = ${colours.desktop}
+border-bottom-color = ${colours.desktop}
+border-left-color = ${colours.desktop}
+border-right-color = ${colours.desktop}
 
 modules-left   = battery wifi vpn
-modules-right  = date time
+modules-right  =  memory cpu time
 modules-center = i3
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+format =<label>
+format-foreground = ${colours.green}
+format-background = ${colours.desktop}
+format-spacing = 10
+label =⸢%percentage%%⸥
+
+[module/memory]
+type = internal/memory
+interval = 0.5
+format = <label>
+format-foreground = ${colours.magenta}
+format-background = ${colours.desktop}
+label = ⸢%gb_used%/%gb_free%⸥
 
 [module/vpn]
 type = custom/script
 exec = ~/.config/polybar/vpnName.sh
 interval = 10
-format = <label>
+format = ⸢<label>⸥
 format-foreground = ${colours.cyan}
-format-padding = 2
-format-margin = 2
-format-underline = ${colours.blue}
-
+format-background = ${colours.desktop}
 
 [module/wifi]
 type = internal/network
 interface = wlp2s0
 interval = 3.0
+label-connected = %essid%
 
-format-connected = <label-connected>
-format-connected-underline = ${colours.blue}
-format-connected-padding = 2
-format-connected-margin=2
-format-connected-font = 1
-
-format-disconnected = <label-disconnected>
-format-disconnected-underline = ${colours.red}
-format-disconnected-padding = 2
-format-disconnected-margin=2
-format-disconnected-font=1
-
-label-connected = %essid%%downspeed:9%
-label-connected-foreground = ${colours.cyan}
-label-connected-font = 1
-
-label-disconnected = Disconnected
-label-disconnected-foreground = ${colours.red}
-label-diconnected-font=1
+format-connected =⸢<label-connected>⸥
+format-connected-background = ${colours.desktop}
+format-connected-foreground = ${colours.blue}
 
 [module/battery]
 type = internal/battery
@@ -80,57 +92,32 @@ type = internal/battery
 battery = BAT0
 adapter = AC
 poll-interval = 5
-full-at =98
+full-at = 100
 
-format-charging             = <ramp-capacity> 
-format-charging-underline    = ${colours.blue}
-format-charging-padding     = 2
-format-charging-margin      = 2
+format-charging = ⸢<label-charging>⸥
+format-charging-background = ${colours.desktop}
+format-charging-foreground = ${colours.yellow}
 
-format-discharging          = <ramp-capacity>
-format-discharging-underline = ${colours.red}
-format-discharging-padding  = 2
-format-discharging-margin   = 2
+format-discharging = ⸢<label-discharging>⸥
+format-discharging-background = ${colours.desktop}
+format-discharging-foreground = ${colours.red}
 
-format-full                 = <ramp-capacity>
-format-full-underline        = ${colours.green}
-format-full-padding         = 2
-format-full-margin          = 2
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-
-ramp-capacity-foreground   = ${colours.blue}
-ramp-capacity-0-foreground = ${colours.red}
-ramp-capacity-font         = 3
+format-full = ⸢<label-full>⸥
+format-full-foreground = ${colours.green}
+format-full-background = ${colours.desktop}
 
 [module/time]
 type              = internal/date
 interval          = 1.0
-date              = %H:%M
-format-foreground = ${colours.cyan}
-format-underline   = ${colours.blue}
-format-font       = 1
-format-padding    = 1
-format-margin     = 1
-
-[module/date]
-type              = internal/date
-interval          = 1.0
-date              = %Y-%m-%d%
-format-foreground = ${colours.cyan}
-format-underline   = ${colours.blue}
-format-font       = 1
-format-padding    = 1
-format-margin     = 1
+date              = ⸢%H:%M⸥
+format-background = ${colours.desktop}
+format-foreground = ${colours.blue}
 
 [module/i3]
 type = internal/i3
 format = <label-state> <label-mode>
-
+format-padding = 3
+format-margin = 3
 ws-icon-0 = 1;⚀
 ws-icon-1 = 2;⚁
 ws-icon-2 = 3;⚂
@@ -141,31 +128,22 @@ ws-icon-6 = 7;♢
 ws-icon-7 = 8;♡
 ws-icon-default = 
  
-label-mode = %mode%
-label-mode-foreground = ${colours.white}
-label-mode-background = ${colours.background}
-label-mode-margin=2
-label-mode-padding = 2
-
-
 label-urgent = %icon%
+label-urgent-background = ${colours.desktop}
 label-urgent-foreground = ${colours.red}
-label-urgent-margin=2
-label-urgent-padding = 2
-
+label-urgent-padding = 3
 
 label-focused = %icon%
-label-focused-foreground = ${colours.green}
-label-focused-margin=2
-label-focused-padding = 2
+label-focused-background = ${colours.desktop}
+label-focused-foreground = ${colours.yellow}
+label-focused-padding = 3
 
 label-unfocused = %icon%
+label-unfocused-background = ${colours.desktop}
 label-unfocused-foreground = ${colours.blue} 
-label-unfocused-margin=2
-label-unfocused-padding = 2
+label-unfocused-padding = 3
 
 label-visible = %icon%
+label-visible-background = ${colours.desktop}
 label-visible-foreground = ${colours.yellow}
-label-visible-margin=2
-label-visible-padding = 2
-
+label-visible-padding = 3

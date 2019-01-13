@@ -11,3 +11,4 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 alias dvpn='nmcli c u DiracVPN'
+alias spatial='cd ~/Repos/libspatial/'

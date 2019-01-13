@@ -53,6 +53,7 @@ URxvt.font:xft:SauceCodePro Nerd Font Mono:size=12:antialias=true, \
 
 
 URxvt.depth:                      32
+!urxvt*cursor:                     i-beam
 URxvt*scrollBar:                  false
 URxvt*mouseWheelScrollPage:       false
 URxvt*cursorBlink:                true
@@ -70,6 +71,12 @@ URxvt.keysym.Control-Up:          \033[1;5A
 URxvt.keysym.Shift-Control-Up:    \033[1;6A
 URxvt.keysym.Control-Down:        \033[1;5B
 URxvt.keysym.Shift-Control-Down:  \033[1;6B
+
+st.font:xft:SauceCodePro Nerd Font Mono:size=12:antialias=true, \
+            xft:DejaVu Sans Mono:size=12:antialias=true, \
+            xft:Font Awesome 5 Free:size=12:antialias=true, \
+            xft:Font Awesome 5 Brands:size=12:antialias=true
+
 
 rofi.separator-style: solid
 rofi.sidebar-mode: false
